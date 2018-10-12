@@ -28,6 +28,11 @@ import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.common.HybridBinarizer;
 import com.squareup.otto.Subscribe;
+import com.yanzhenjie.zbar.Image;
+import com.yanzhenjie.zbar.ImageScanner;
+import com.yanzhenjie.zbar.Symbol;
+import com.yanzhenjie.zbar.SymbolSet;
+import java.util.Arrays;
 import com.taobao.weex.bridge.JSCallback;
 
 /**

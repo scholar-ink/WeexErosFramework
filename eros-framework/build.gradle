@@ -57,6 +57,7 @@ dependencies {
     compile ('com.github.niorgai:StatusBarCompat:2.1.4', {
         exclude group: 'com.android.support'
     })
+    api 'com.yanzhenjie.zbar:zbar:1.0.0'
     compile project(':nexus')
 
 
