@@ -7,6 +7,12 @@
         tools:replace="android:allowBackup"
         android:allowBackup="false"
         android:label="@string/app_name"
-        android:supportsRtl="true"></application>
+        android:supportsRtl="true">
+        <!-- 自定义二维码扫描界面方 -->
+        <activity
+            android:name=".activity.CustomCaptureActivity"
+            android:label="自定义扫描界面"
+            android:screenOrientation="portrait" />
+    </application>
 
 </manifest>

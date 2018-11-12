@@ -1,5 +1,6 @@
 package com.eros.framework.manager.impl;
 
+import com.eros.framework.activity.CustomCaptureActivity;
 import com.eros.framework.constant.Constant;
 import com.eros.framework.manager.Manager;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -25,6 +26,8 @@ public class CameraManager extends Manager {
         integrator.setBeepEnabled(config.isBeep());
         integrator.setOrientationLocked(false);
         integrator.setBarcodeImageEnabled(true);
+        integrator.addExtra("createStatus",config.getCreateStatus());
+        integrator.setCaptureActivity(CustomCaptureActivity.class);
         integrator.initiateScan();
     }
 
@@ -39,6 +42,7 @@ public class CameraManager extends Manager {
 
 
     public static class ScanConfig {
+        private final String createStatus;
         private Activity context;
         private Collection<String> desiredBarcodeFormats;
         private String prompt;
@@ -64,6 +68,10 @@ public class CameraManager extends Manager {
             return prompt;
         }
 
+        public String getCreateStatus() {
+            return createStatus;
+        }
+
         public void setPrompt(String prompt) {
             this.prompt = prompt;
         }
@@ -77,17 +85,19 @@ public class CameraManager extends Manager {
         }
 
         private ScanConfig(Activity context, Collection<String> desiredBarcodeFormats, String
-                prompt, boolean beep) {
+                prompt, boolean beep, String createStatus) {
             this.context = context;
             this.desiredBarcodeFormats = desiredBarcodeFormats;
             this.prompt = prompt;
             this.beep = beep;
+            this.createStatus = createStatus;
         }
 
         public static class ConfigBuilder {
             private Activity context;
             private Collection<String> desiredBarcodeFormats;
             private String prompt;
+            private String createStatus;
             private boolean beep;
 
             public ConfigBuilder setContext(Activity context) {
@@ -105,13 +115,18 @@ public class CameraManager extends Manager {
                 return this;
             }
 
+            public ConfigBuilder setCreateStatus(String createStatus) {
+                this.createStatus = createStatus;
+                return this;
+            }
+
             public ConfigBuilder setBeepEnable(boolean beepEnable) {
                 this.beep = beepEnable;
                 return this;
             }
 
             public ScanConfig build() {
-                return new ScanConfig(context, desiredBarcodeFormats, prompt, beep);
+                return new ScanConfig(context, desiredBarcodeFormats, prompt, beep, createStatus);
             }
         }
     }

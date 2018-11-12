@@ -48,11 +48,12 @@ public class ToolModule extends WXModule {
     }
 
     @JSMethod(uiThread = true)
-    public void scan(JSCallback callback) {
+    public void scan(String params, JSCallback callback) {
         WeexEventBean eventBean = new WeexEventBean();
         eventBean.setContext(mWXSDKInstance.getContext());
         eventBean.setKey(WXEventCenter.EVENT_CAMERA);
         eventBean.setJscallback(callback);
+        eventBean.setJsParams(params);
         ManagerFactory.getManagerService(DispatchEventManager.class).getBus().post(eventBean);
     }
 

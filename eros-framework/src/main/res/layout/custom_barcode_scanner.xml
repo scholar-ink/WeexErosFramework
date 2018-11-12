@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.journeyapps.barcodescanner.BarcodeView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/zxing_barcode_surface"/>
+
+    <com.eros.framework.CustomViewfinderView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/zxing_viewfinder_view"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/zxing_transparent"
+        android:text="请对准商品条形码，耐心等待"
+        android:layout_marginBottom="150dp"
+        android:id="@+id/text_tip"
+        android:textColor="@color/zxing_status_text"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/zxing_transparent"
+        android:text="手动创建"
+        android:textSize="16dp"
+        android:id="@+id/text_hand"
+        android:textColor="@color/zxing_status_text"/>
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/click"
+        android:id="@+id/button_click" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#2d2d2d"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/back"
+            android:id="@+id/button_back" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#2d2d2d"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingRight="24dp"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:text="扫描商品" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

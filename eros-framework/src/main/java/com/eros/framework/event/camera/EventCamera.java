@@ -45,18 +45,18 @@ public class EventCamera extends EventGate {
         } else if (WXEventCenter.EVENT_CAMERA_PATH.equals(type)) {
             openCamera(params, context, weexEventBean.getJscallback());
         } else if (WXEventCenter.EVENT_CAMERA.equals(type)) {
-            scan(weexEventBean.getJscallback(), context);
+            scan(params,weexEventBean.getJscallback(), context);
         }
     }
 
-    public void scan(JSCallback jscallback, Context context) {
+    public void scan(String params, JSCallback jscallback, Context context) {
         mScanCallback = jscallback;
         CameraManager cameraManager = ManagerFactory.getManagerService(CameraManager.class);
         CameraManager.ScanConfig.ConfigBuilder builder = new CameraManager.ScanConfig
                 .ConfigBuilder();
         builder.setBeepEnable(true).setCodeFormat(IntentIntegrator.ALL_CODE_TYPES).setContext(
                 (Activity) context).setPrompt(context.getResources().getString(R.string
-                .capture_qrcode_prompt));
+                .capture_qrcode_prompt)).setCreateStatus(params);
         cameraManager.scanCode(builder.build());
         ManagerFactory.getManagerService(DispatchEventManager.class).getBus().register(this);
     }
