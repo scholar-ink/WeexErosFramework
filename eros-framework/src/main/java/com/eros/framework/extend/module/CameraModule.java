@@ -23,11 +23,10 @@ public class CameraModule extends WXModule {
 
 
     @JSMethod(uiThread = true)
-    public void scan(String params, JSCallback callback) {
+    public void scan(JSCallback callback) {
         WeexEventBean eventBean = new WeexEventBean();
         eventBean.setContext(mWXSDKInstance.getContext());
         eventBean.setKey(WXEventCenter.EVENT_CAMERA);
-        eventBean.setJsParams(params);
         eventBean.setJscallback(callback);
         ManagerFactory.getManagerService(DispatchEventManager.class).getBus().post(eventBean);
     }
